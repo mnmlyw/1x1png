@@ -134,8 +134,14 @@
 
   picker.addEventListener('input', () => hex.value = picker.value);
   hex.addEventListener('input', () => {
+    if (hex.value && !hex.value.startsWith('#')) {
+      hex.value = `#${hex.value}`;
+    }
+
     const v = hex.value;
-    if (/^#[0-9a-f]{6}$/i.test(v)) picker.value = v;
+    if (/^#[0-9a-f]{6}$/i.test(v)) {
+      picker.value = v;
+    }
   });
   alpha.addEventListener('input', () => alphaVal.textContent = alpha.value);
 
